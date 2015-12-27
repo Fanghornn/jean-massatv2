@@ -1,0 +1,15 @@
+{
+  "name": "fanghornn.com",
+  "version": "0.0.1",
+  "description": "My personnal developper landing page",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jean Baptiste Priam Massat",
+  "license": "GPL-2.0",
+  "dependencies": {
+    "compression": "^1.6.0",
+    "express": "^4.13.3"
+  }
+}
