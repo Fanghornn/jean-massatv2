@@ -2,19 +2,35 @@
 
 var express = require('express'),
 	app,
-	path = require('path');
+	path = require('path'),
+	nodemailer = require('nodemailer'),
+	bodyParser = require('body-parser'),
+	mailOptions = {},
+	hostName,
+	transporter;
 
 function startServer(config){
 
 	app = express();
 	app.disable('x-powered-by'); 
 	app.use(require('compression')());
+	app.use(bodyParser.json());
+	app.use(bodyParser.urlencoded({extended: true}));
 
 	//Setting static directory used by express
 	if (!config.dev)
 		app.use(express.static(path.join(__dirname, 'static')));
 	else
 		app.use(express.static(path.join(__dirname + '/../', 'src')));
+
+	hostName = config.hostName;
+
+	transporter = nodemailer.createTransport('smtps://' + config.mailLogin + '%40gmail.com:' + config.mailPassword + '@smtp.gmail.com');
+
+	//Setting my own mail address as receiver of web mails sent from the front end user
+	mailOptions = {
+		to: config.mailLogin + '@gmail.com'
+	};
 
 	app.set('title', config.hostName);
 
@@ -35,10 +51,56 @@ function setAppRoutes(){
 		res.sendFile( 'index.html', {root:'./views'});
 	});
 
+	//Web form mail POST sender handler
+	app.post('/vaguemestre', handleMailSending);
+
 	//Handles any other routes accessed by any http method
 	app.all('*', function(req, res){
 		//Send 404 error
 		res.sendFile( '404.html', {root:'./views'});
+	});
+
+}
+
+/**
+ * [handleMailSending Handle the POST request with data and send a mail to myself]
+ * 
+ * @param  {[object]} req 		[express request object]
+ * @param  {[object]} res 		[express response object]
+ * 
+ * @return {[undefined]}     	[Just send back a response to the ajax request call]
+ */
+function handleMailSending(req, res){
+
+	var mailSubject = (req.body.subject === '') ? hostName + ' : no subject' : hostName + ' : ' + req.body.subject; 
+
+	//Setting mail options from the front end form POST data 
+	mailOptions.from = req.body.author;
+	mailOptions.subject = req.body.authorMail + ' - ' + mailSubject;
+	mailOptions.html = '<p>' + req.body.content + '<p>';
+
+	//Sending the mail
+	transporter.sendMail(mailOptions, function(error){
+		
+		if(error){
+			
+			//Returning fail to ajax request
+			res.send('fail');
+			res.end();
+		
+		}else{
+
+			//The mail has been sent, everything went fine
+			res.send('ok');
+			res.end();
+
+		}
+
+		//Reset mailOptions object properties
+		mailOptions.from = '';
+		mailOptions.subject = '';
+		mailOptions.html = '';
+
 	});
 
 }
