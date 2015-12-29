@@ -1021,48 +1021,6 @@
             $('html, body').animate({scrollTop : 0},800);
             return false;
         });
-		
-		/** Contact Form */			
-		$('.contact-submit').on('click', function(e){
-			ripple( $(this).parent(), e.pageX, e.pageY );
-			
-			var errors;
-			var contact_form = $(this).closest('.contactForm');
-			var contact_form_items = contact_form.find('.input-field');		
-			var name = contact_form.find('.contact-name');
-			var email = contact_form.find('.contact-email');
-			var message = contact_form.find('.contact-message');
-			var contact_form_response = contact_form.find('.contact-response');	
-			
-			// Reset errors
-			contact_form_items.removeClass('error');
-			errors = false;
-			
-			if (name.val()  === '') {
-				errors = true;
-				name.parent().addClass('error');
-			}		
-			if (email.val() === '' || !isValidEmail(email.val())) {
-				errors = true;
-				email.parent().addClass('error');
-			}		
-			if (message.val() === '') {
-				errors = true;
-				message.parent().addClass('error');
-			}
-			
-			if( !errors ) {
-				$.post("php/contact_form.php",
-					contact_form.serialize(),
-					function(response) {
-					   contact_form_response.html(response);				   
-					}
-				);			
-			}
-			
-			return false;
-		});
-
 
         /** Preloader:
          *  site was successfully loaded, hide site pre-loader */
