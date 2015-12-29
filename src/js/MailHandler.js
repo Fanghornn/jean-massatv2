@@ -11,6 +11,8 @@
 
 		mailRequest : null,
 
+		mailErrorMessage : 'Oups !<br/><br/>Une erreur est survenue durant l\'envoi du mail...<br/><br/>Merci d\'essayer ultérieurement.',
+
 		/**
 		 * [initialize]
 		 * @return {[undefined]} 		[just attach custom submit handler]
@@ -47,7 +49,7 @@
 		requestErrorHandler : function(request){
 	
 			if(request.statusText !== 'abort'){
-				alertify.notify('Oups !<br/><br/>Une erreur est survenue durant l\'envoi du mail...<br/><br/>Merci d\'essayer ultérieurement.', 'error', 5);
+				alertify.notify(self.mailErrorMessage , 'error', 0);
 			}
 	
 		},
@@ -60,7 +62,9 @@
 		requestSuccessHandler : function(res){
 		
 			if(res === 'ok'){
-				alertify.notify('Merci !<br/>j\'ai bien reçu votre mail.<br/>', 'success', 5);
+				alertify.notify('Merci !<br/>j\'ai bien reçu votre mail.<br/>', 'success', 0);
+			}else{
+				alertify.notify(self.mailErrorMessage , 'error', 0);
 			}
 		
 		}
