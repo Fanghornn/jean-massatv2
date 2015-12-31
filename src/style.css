@@ -3590,13 +3590,14 @@ body {
 .profile-list dd {
     margin-left: 125px;
     font-size: 15px;
-    font-weight: 400;
+    font-weight: bold;
     line-height: 20px;
     color: #9da0a7;
 }
 
 .profile-list dd a {
     color: inherit;
+    font-weight: bold;
 }
 
 .profile-list dd.profile-vacation {
