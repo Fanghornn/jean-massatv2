@@ -21,7 +21,6 @@
 	<!-- Styles -->
 	<link rel="stylesheet" type="text/css" href="js/plugins/jquery.bxslider/jquery.bxslider.css">
 	<link rel="stylesheet" type="text/css" href="js/plugins/jquery.customscroll/jquery.mCustomScrollbar.min.css">
-	<link rel="stylesheet" type="text/css" href="js/plugins/jquery.mediaelement/mediaelementplayer.min.css">
 	<link rel="stylesheet" type="text/css" href="js/plugins/jquery.fancybox/jquery.fancybox.css">
 	<link rel="stylesheet" type="text/css" href="js/plugins/jquery.owlcarousel/owl.carousel.css">
 	<link rel="stylesheet" type="text/css" href="js/plugins/jquery.owlcarousel/owl.theme.css">
@@ -385,12 +384,11 @@
 										<figcaption class="portfolio-caption">
 											<div class="portfolio-caption-inner">
 												<h3 class="portfolio-title">Open-dj</h3>
-												<h4 class="portfolio-cat">node.js - Socket.IO - MaterializeCSS - Single Page Application</h4>
+												<h4 class="portfolio-cat">node.js - express - Socket.IO - MaterializeCSS - Single Page Application</h4>
 
 												<div class="btn-group">
 													<a class="btn-link" href="https://github.com/Fanghornn/open-dj" target="_blank"><i class="icon icon-link"></i></a>
 													<a class="portfolioFancybox btn-zoom" data-fancybox-group="portfolioFancybox1" href="#portfolio1-inline1"><i class="icon icon-eye"></i></a>
-													<a class="portfolioFancybox hidden" data-fancybox-group="portfolioFancybox1" href="#portfolio1-inline2"></a>
 												</div>
 											</div>
 										</figcaption>
@@ -400,22 +398,27 @@
 									<div id="portfolio1-inline1" class="fancybox-inline-box">
 										<img class="inline-img" src="img/uploads/portfolio/opendjpres1011x530.jpg" alt=""/>
 										<div class="inline-cont">
-											<h2 class="inline-title">Open dj item1 titre.</h2>
+											<h2 class="inline-title">Pourquoi ?</h2>
 											<div class="inline-text">
-												<p>Open dj descriptif bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla </p>
+												<p>Ma philosophie est que le meilleur moyen d'apprendre un langage ou une technique de développement est de <strong>concevoir puis réaliser</strong> un projet utile (au moins pour moi) et possédant un minimum de complexité ou de contraintes.
+												<br/><br/>Étant curieux de nature et souhaitant parfaire mes compétences en JavaScript, je souhaitais connaître aussi bien ses facettes côté client que serveur. C'est pourquoi je me suis lancé dans le développement de l'application Open-dj.<br/><br/></p>
+												<h2 class="inline-title">Description du projet</h2>
+												<p>Open dj est un <strong>serveur node.js</strong> qui à pour but de proposer une interface web style <strong>single page application</strong>, permettant à des utilisateurs <strong>mobiles/desktop</strong> de chercher et diffuser un flux audio en provenance de youtube, directement sur des hauts parleurs connectés sur la machine du serveur.
+												<br/><br/>Une barre de bouton leur permet aussi de mettre en pause/lecture ou bien de contrôler le volume des hauts parleurs depuis le site.
+												<br/><br/>Un système de playlist octroie à tous les utilisateurs, la possibilité de mettre en fil d'attente leur musique préférée s'il y en à déjà une en cours de diffusion. 
+												<br/><br/>La finalité de ce projet étant de pouvoir proposer à mes amis, lorsque je les reçois chez moi, de choisir eux même, avec leur smartphone, la musique qu'ils veulent écouter.
+												<br/><br/>Je l'utilise surtout personnellement pour écouter de la musique pendant mes sessions de lecture.<br/><br/></p>
+												<h2 class="inline-title">Réalisation</h2>
+												<p>Côté serveur, c'est <strong>node.js et express derrière un reverse proxy Nginx</strong> qui distribueront l'application aux clients. Un module maison s'occupera d'ouvrir des flux audio sur la machine hôte par l’intermédiaire du lecteur multimédia VLC.
+												<br/><br/>Une fois les clients sur Open-dj, une connexion websocket est établie entre leur navigateur et mon serveur. <strong>Toutes les transactions réalisées sur l'application passeront par leur connexion permanente au serveur Socket.IO</strong>.
+												<br/><br/>Un champ de recherche offre la possibilité d'effectuer une recherche sur youtube.com, en fait, je récupère leur pattern de recherche sur le serveur et ouvre une requête http sur youtube via <strong>le module HTTP de node.js</strong>. 
+												<br/><br/>Une fois la requête terminée, je leur renvoie les résultats de recherche sur leur vue HTML sous forme de blocs cliquables.
+												<br/><br/>Lorsqu'un utilisateur souhaite lancer la lecture d'une musique en cliquant sur un bloc de résultat, l'ID de la vidéo youtube est communiquée au serveur node.js. Tous les autres utilisateurs connectés au serveur websocket recevront une notification indiquant qu'un de leur homologue vient de lancer la lecture d'une musique.
+												<br/><br/>Pendant ce temps-là, le serveur va construire une URL youtube contenant cet identifiant vidéo <strong>et le transmetra au stream de l'entrée standard d'un processus VLC en attente qui offre une API</strong>. Le processus du lecteur multimédia décryptera l'URL, récupérera et diffusera sur les hauts parleurs, <strong>le flux audio résultant de cette vidéo</strong>.
+												<br/><br/><strong>Le code source est libre et consultable sur </strong><a href="https://github.com/Fanghornn/open-dj" target="_blank">mon repository github</a>.</p>
 											</div>
 										</div>
 									</div>																
-									
-									<div id="portfolio1-inline2" class="fancybox-inline-box">
-										<img class="inline-img" src="img/uploads/portfolio/opendjpresmobilemenu.jpg" alt=""/>
-										<div class="inline-cont">
-											<div class="inline-text">
-												<h2 class="inline-title">Open dj item2 titre</h2>
-												<p>Open dj descriptif bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla </p>
-											</div>
-										</div>
-									</div>
 									<!-- End: Portfolio Inline Boxes -->
 								</div>
 							</div><!-- .grid-item -->			
@@ -427,7 +430,7 @@
 										<figcaption class="portfolio-caption">
 											<div class="portfolio-caption-inner">
 												<h3 class="portfolio-title">jean-massat.com V2</h3>
-												<h4 class="portfolio-cat">Node.js - jQuery </h4>
+												<h4 class="portfolio-cat">Node.js - express - jQuery </h4>
 
 												<div class="btn-group">
 													<a class="btn-link" href="#" target="_blank"><i class="icon icon-link"></i></a>
@@ -443,7 +446,12 @@
 										<div class="inline-cont">
 											<div class="inline-text">
 												<h2 class="inline-title">jean-massat.com V2</h2>
-												<p>parler de la création du site bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla </p>
+													La deuxième version de jean-massat.com est celle sur laquelle vous vous trouvez actuellement.
+													<br/><br/>Le back-end est en <strong>node.js avec le framework web express</strong>, le module NPM <trong>«nodemailer»</trong> m'a permis de gérer l'envoi de vos messages sur ma boite mail à travers un formulaire web que vous pouvez retrouver en pied de page.
+													<br/><br/>Pour l'architecture réseau, c'est un serveur <strong>Nginx</strong> qui s'occupe de traiter vos requêtes HTTP et les redirige, grâce à un <strong>reverse proxy</strong>,  sur l'application node.js de mon site qui écoute sur un port spécifique en interne.
+													<br/><br/>C'est une incrustation d'un template provenant de themeforest qui m'a permis de vous proposer ce design <strong>material et mobile responsive</strong>. J'ai du changer et supprimer un bon nombre de fonctionnalités pour le rendre le plus rapide possible pour le client.
+													<br/><br/><strong>Le code source du site est libre et consultable sur mon</strong><a href="" target="_blank">repository github</a>.
+												<br/></p>
 											</div>
 										</div>								
 									</div>
@@ -474,11 +482,13 @@
 										<div class="inline-cont">
 											<div class="inline-text">
 												<h2 class="inline-title">jean-massat.com</h2>
-												<p>La création de ce site web avait pour but de confirmer mon aprentissage du développement et ainsi démontrer à mes futurs potentiels employeurs, mes compétence concrète de développeur junior.
-												<br/><br/>Ayant apris la création de plugin pour le CMS Joomla 3 durant mon stage de fin d'études, j'ai naturellement décidé de partir sur une même plate forme. Joomla dispose d'une API PHP très riche et fut un atout considerable dans ma démarche.
-												<br/>Sous forme d'un modèle MVC, j'ai mis en place un sytème d'affichage d'articles de blog avec la possibilité d'enregistrer/éditer/supprimer ces derniers derrière une interface administrateur. 
-												<br/><br/>Coté client JavaScript, le framework Mootools (concurrent jQuery) s'est imposé pour les mêmes raisons. Il accompagne toutes les interractions utilisateurs durant la navigation.
-												<br/><br/>Concernant le design, c'est le framework CSS gantry qui m'a permis de réaliser une théme mobile responsive.</p>
+												<p>La création de ce site web avait pour but de <strong>confirmer mon apprentissage du développement</strong> et ainsi démontrer à mes futurs potentiels employeurs, mes compétences concrète de développeur junior.
+												<br/><br/>Ayant appris la création de plugin pour le CMS Joomla 3 durant mon stage de fin d'études, j'ai naturellement décidé de partir sur une même plate forme.<strong> Joomla dispose d'une API PHP</strong> très riche et fut un atout considérable dans ma démarche.
+												<br/>Sous forme d'un modèle MVC, j'ai mis en place un <strong>sytème d'affichage d'articles de blog</strong> avec la possibilité <strong>d'enregistrer/éditer/supprimer ces derniers derrière une interface administrateur</strong>. 
+												<br/><br/>Côté client JavaScript, le <strong>framework Mootools</strong> (concurrent jQuery) s'est imposé pour les mêmes raisons. Il accompagne toutes les interractions utilisateurs durant la navigation.
+												<br/><br/>Concernant le design, c'est le <strong>framework CSS gantry</strong> qui m'a permis de réaliser une <strong>thème mobile responsive</strong>.
+												<br/><br/>Le code source du site est libre et consultable sur mon <strong><a href="https://github.com/Fanghornn/Jean-Massat" target="_blank">repository github</a></strong>.
+												</p>
 											</div>
 										</div>								
 									</div>
@@ -493,7 +503,7 @@
 										<figcaption class="portfolio-caption">
 											<div class="portfolio-caption-inner">
 												<h3 class="portfolio-title">Raspberry PI</h3>
-												<h4 class="portfolio-cat">Contrôler une LED RGB avec une API C </h4>
+												<h4 class="portfolio-cat">Contrôler une LED RGB en C </h4>
 
 												<div class="btn-group">
 													<a class="btn-link" href="http://bit.ly/1YtB8he" target="_blank"><i class="icon icon-link"></i></a>
@@ -508,8 +518,11 @@
 										<img class="inline-img" src='img/uploads/portfolio/portfolio-thumb-08-large.jpg' alt=''/>
 										<div class="inline-cont">
 											<div class="inline-text">
-												<h2 class="inline-title">Rasbperry PI</h2>
-												<p>parler du projet bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla </p>
+												<h2 class="inline-title">Rasbperry pi et ses GPIO</h2>
+												<p>Pour m'occuper, j'ai décidé de faire l'acquisition d'une raspberry pi.
+												<br/><br/>Après avoir installé un serveur DNS dessus pour <strike>contourner la censure des tracker torrent par l'état français</strike> ne plus être tributaire de ceux de google, je me suis amusé à monter un circuit en série pour alimenter une LED RGB <strong>(voir photo ci-dessus)</strong>.
+												<br/><br/>Pour pimenter un peu le tout, je me suis lancé dans l'écriture d'un script en C pour piloter <strong>les GPIO (General Purpose Input/Output)</strong> alimentant ladite LED. C'est la libraire <strong><a href="http://wiringpi.com/" target="_blank">WiringPi</a></strong> qui rend possible la prise en compte et manipulation des GPIO présent sur la machine pendant la compilation des scripts.
+												<br/><br/>Le code source est libre et consultable sur <strong><a href="" target="_blank">mon compte github</a></strong></p>
 											</div>
 										</div>								
 									</div>
@@ -625,7 +638,6 @@
     <script type="text/javascript" src="js/plugins/jquery.appear.min.js"></script>
     <script type="text/javascript" src="js/plugins/jquery.bxslider/jquery.bxslider.min.js"></script>
     <script type="text/javascript" src="js/plugins/jquery.customscroll/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script type="text/javascript" src="js/plugins/jquery.mediaelement/mediaelement-and-player.min.js"></script>
     <script type="text/javascript" src="js/plugins/jquery.fancybox/jquery.fancybox.pack.js"></script>
     <script type="text/javascript" src="js/plugins/jquery.fancybox/helpers/jquery.fancybox-media.js"></script>
 	<script type="text/javascript" src="js/plugins/jquery.owlcarousel/owl.carousel.min.js"></script>
