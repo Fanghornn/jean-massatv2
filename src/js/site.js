@@ -153,6 +153,30 @@
                 }
                 $tline_inner.height($tline_height);
                 $tline_bar.css({'top': '80px', 'height': $tline_bar_height + 'px'});
+
+                //Getting post traited timeline boxes
+                var boxes = $('.timeline-box');
+
+                //foreach
+                $.each(boxes, function(index){
+
+                    //From the second to the fifth timeline box (work exp)
+                    if(index > 0 && index <= 4){
+                        //Getting previous + current timeline box top css value
+                        var prevBoxTopVal = parseInt($(this).prev().css('top'));
+                        var currentBoxTopVal = parseInt($(this).css('top'));
+                        //getting result of substraction of current with the previous one
+                        var diffVal = (currentBoxTopVal - prevBoxTopVal);
+                        //if these two boxes are too much close from eachother
+                        if(diffVal <= 150){
+                            //adding 200px to the top value
+                            var finalValue = currentBoxTopVal + 200;
+                            $(this).css('top', finalValue + 'px');
+                        }
+                    }
+
+                });
+
             });
         } else { // For small devices
             $('.timeline-bar').attr('style', '');
