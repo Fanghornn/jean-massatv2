@@ -20,23 +20,31 @@
 		initialize : function(){
 
 			//attach Web form mail sender handler
-			$('#vaguemestre').submit(function(event){
+			$('#vaguemestre').on('submit', self.submitHandler);
 
-				event.preventDefault();
+		},
 
-				//Multiple click handler
-				if(self.mailRequest){
-					self.mailRequest.abort();
-				}
+		/**
+		 * [submitHandler handle the mail form submitting]
+		 * 
+		 * @param  {[object]}	 event 		[The submit event object]
+		 * @return {[undefined]}
+		 */
+		submitHandler : function(event){
 
-				self.mailRequest = $.ajax({
-					type: 'POST',
-					url: '/vaguemestre',
-					data: $(this).serialize(),
-					success:self.requestSuccessHandler,
-					error:self.requestErrorHandler
-				});
+			event.preventDefault();
 
+			//Multiple click handler
+			if(self.mailRequest){
+				self.mailRequest.abort();
+			}
+
+			self.mailRequest = $.ajax({
+				type: 'POST',
+				url: '/vaguemestre',
+				data: $(this).serialize(),
+				success:self.requestSuccessHandler,
+				error:self.requestErrorHandler
 			});
 
 		},
@@ -52,6 +60,10 @@
 				alertify.notify(self.mailErrorMessage , 'error', 0);
 			}
 	
+			$('.form-submit-btn').remove();
+
+			$('.contact-response').html('<i class="icon icon-sad"></i><br/><br/>Impossible de contacter le serveur.');
+
 		},
 
 		/**
@@ -62,10 +74,14 @@
 		requestSuccessHandler : function(res){
 		
 			if(res === 'ok'){
-				alertify.notify('Merci !<br/>j\'ai bien reçu votre mail.<br/>', 'success', 0);
+				alertify.notify('Votre message sera lu dans les plus brefs délais.<br/>', 'success', 0);
 			}else{
 				alertify.notify(self.mailErrorMessage , 'error', 0);
 			}
+
+			$('.form-submit-btn').remove();
+
+			$('.contact-response').html('<i class="icon icon-checkmark"></i><br/><br/>À bientôt !');
 		
 		}
 
