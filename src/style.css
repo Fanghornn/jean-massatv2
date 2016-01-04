@@ -3611,6 +3611,10 @@ body {
     padding-top: 8px;
 }
 
+.profile-list dd.profile-github {
+    font-size: 14px;
+}
+
 .profile-list .profile-vacation span {
     color: #fff;
     font-size: 12px;
