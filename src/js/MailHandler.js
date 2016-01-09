@@ -72,16 +72,20 @@
 		 * @return {[undefined]}
 		 */
 		requestSuccessHandler : function(res){
-		
+
+			var msgResponse;
+
 			if(res === 'ok'){
+				msgResponse = '<i class="icon icon-checkmark"></i><br/><br/>À bientôt !';			
 				alertify.notify('Votre message sera lu dans les plus brefs délais.<br/>', 'success', 0);
 			}else{
+				msgResponse = '<i class="icon icon-sad"></i><br/><br/>Impossible de contacter le serveur.';
 				alertify.notify(self.mailErrorMessage , 'error', 0);
 			}
 
 			$('.form-submit-btn').remove();
 
-			$('.contact-response').html('<i class="icon icon-checkmark"></i><br/><br/>À bientôt !');
+			$('.contact-response').html(msgResponse);
 		
 		}
 
