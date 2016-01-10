@@ -93,8 +93,8 @@
     }
 
     function positioningInterestsTooltips() {
-		var interests = $(".interests-list", "#interests");
-		var tooltips = $(".interests-list li span", "#interests");
+		var interests = $(".interests-list", "#loisirs");
+		var tooltips = $(".interests-list li span", "#loisirs");
 		
         if (interests.length > 0) {
 			for (var i = 0; i < tooltips.length; i++) {
