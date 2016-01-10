@@ -70,7 +70,7 @@
     }
 
     function fillProgressBars() {
-        var $progress_bar = $('.progress-bar', '#skills');
+        var $progress_bar = $('.progress-bar', '#competences');
 
         if (!isMobile) {
             $progress_bar.appear();
