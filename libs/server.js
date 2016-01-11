@@ -89,7 +89,7 @@ function handleMailSending(req, res){
 
 	//Setting mail options from the front end form POST data 
 	mailOptions.from = req.body.author;
-	mailOptions.subject = req.body.authorMail + ' - ' + mailSubject;
+	mailOptions.subject = mailSubject + ' - ' + req.body.authorMail;
 	mailOptions.html = '<p>' + req.body.content + '<p>';
 
 	//Sending the mail
