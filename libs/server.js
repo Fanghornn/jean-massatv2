@@ -59,9 +59,14 @@ function startServer(config){
 
 function setAppRoutes(){
 
-	//The only avaiable route (regex matches / and /index.html)
+	//The main route (regex matches / and /index.html)
 	app.get('(/|/index.html)', function(req, res){
 		res.sendFile( 'index.html', {root:'./views'});
+	});
+
+	app.get('/robots.txt', function(req, res){
+		res.type('text/plain');
+		res.sendFile('robots.txt', {root:'./views'});
 	});
 
 	//Web form mail POST sender handler
