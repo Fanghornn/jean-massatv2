@@ -30,11 +30,29 @@ function startServer(config){
 	app.use(bodyParser.json());
 	app.use(bodyParser.urlencoded({extended: true}));
 
+	//Setting options object for express http handling
+	var expressHttpOptions = {
+		maxAge:'10d',
+		index: false,
+		setHeaders: function(res){
+			res.set('x-timestamp', Date.now());
+		}
+	};
+
 	//Setting static directory used by express
-	if (!config.dev)
-		app.use(express.static(path.join(__dirname, 'static')));
-	else
-		app.use(express.static(path.join(__dirname + '/../', 'src')));
+	if (!config.dev){
+
+		app.use(express.static(path.join(__dirname, + '/../', 'static'), expressHttpOptions));
+
+	}else{
+
+		//We disable cache for development environement
+		expressHttpOptions.etag = false;
+		expressHttpOptions.maxAge = 0;
+		
+		app.use(express.static(path.join(__dirname + '/../', 'src'), expressHttpOptions));
+
+	}
 
 	hostName = config.hostName;
 
@@ -67,6 +85,11 @@ function setAppRoutes(){
 	app.get('/robots.txt', function(req, res){
 		res.type('text/plain');
 		res.sendFile('robots.txt', {root:'./views'});
+	});
+
+	//test
+	app.get('/indexprod.html', function(req,res){
+		res.sendFile('indexprod.html', {root:'./views'});
 	});
 
 	//Web form mail POST sender handler
