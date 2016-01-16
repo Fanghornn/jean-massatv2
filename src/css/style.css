@@ -105,6 +105,10 @@ html {
     -webkit-tap-highlight-color: transparent;
 }
 
+#home-cover-background {
+    background-image: url('../img/uploads/rs-cover.jpg')
+}
+
 article,
 aside,
 details,
@@ -4335,7 +4339,7 @@ body {
 .fancybox-portfolio .fancybox-close,
 .fancybox-portfolio .fancybox-prev span,
 .fancybox-portfolio .fancybox-next span {
-    background-image: url("img/fancybox_sprite.png");
+    background-image: url("../img/fancybox_sprite.png");
 }
 
 .fancybox-portfolio .fancybox-close {
@@ -4430,7 +4434,7 @@ body {
 @media only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
     .fancybox-portfolio .fancybox-nav span,
     .fancybox-portfolio .fancybox-close {
-        background-image: url("img/fancybox_sprite@2x.png");
+        background-image: url("../img/fancybox_sprite@2x.png");
         background-size: 135px 45px;
     }
 }
