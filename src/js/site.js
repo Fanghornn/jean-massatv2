@@ -189,17 +189,36 @@
 
                     //From the second to the fifth timeline box (work exp)
                     if(index > 0 && index <= 4){
+                        
                         //Getting previous + current timeline box top css value
-                        var prevBoxTopVal = parseInt($(this).prev().css('top'));
-                        var currentBoxTopVal = parseInt($(this).css('top'));
+                        var el = $(this);
+                        var prevBoxTopVal = parseInt(el.prev().css('top'));
+                        var currentBoxTopVal = parseInt(el.css('top'));
+
                         //getting result of substraction of current with the previous one
                         var diffVal = (currentBoxTopVal - prevBoxTopVal);
                         //if these two boxes are too much close from eachother
                         if(diffVal <= 150){
                             //adding 200px to the top value
                             var finalValue = currentBoxTopVal + 200;
-                            $(this).css('top', finalValue + 'px');
+                            el.css('top', finalValue + 'px');
                         }
+
+                        //Next we need to check current timelinebox alignment with siblings
+                        if(el.next() && el.prev()){
+
+                            //If the previous box top value is greater than current one
+                            if(prevBoxTopVal > parseInt(el.css('top'))){
+
+                                //It means that the time line is broken and we need to put it lower
+                                var fixTopVal = (prevBoxTopVal + 200) + 'px';
+
+                                el.css('top', fixTopVal);
+
+                            }
+
+                        }
+
                     }
 
                 });
