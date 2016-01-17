@@ -64,7 +64,7 @@ console.log('\n All of the JavaScript files has been successfuly compressed in: 
 //Removing temporary js file on the server
 fs.unlinkSync(temporaryFilePath);
 
-console.log('\n "' + temporaryFilePath +'" has been successfuly removed !\n\n\n');
+console.log('\n "' + temporaryFilePath +'" has been successfuly removed !\n\n');
 
 /**
  * CSS
@@ -113,9 +113,9 @@ styleResult = uglifycss.processFiles(
 //Writing result in static css path
 fs.writeFileSync(cssPath, styleResult);
 
-console.log('\n All of the JavaScript files has been successfuly compressed in: ' + cssPath + ' !');
+console.log('\n All of the CSS files has been successfuly compressed in: ' + cssPath + ' !');
 
 //Removing temporary js file on the server
 fs.unlinkSync(temporaryFilePath);
 
-console.log('\n "' + temporaryFilePath +'" has been successfuly removed !');
+console.log('\n "' + temporaryFilePath +'" has been successfuly removed !\n');
