@@ -842,12 +842,15 @@
   margin-top: 10px;
 }
 .alertify-notifier .ajs-message.ajs-success {
+  background: rgba(91, 189, 114); /* Fallback for IE, because IE 8- can't handle Alpha properties ahah..*/
   background: rgba(91, 189, 114, 0.95);
 }
 .alertify-notifier .ajs-message.ajs-error {
+  background: rgba(217, 92, 92); /* Fallback for IE */
   background: rgba(217, 92, 92, 0.95);
 }
 .alertify-notifier .ajs-message.ajs-warning {
+  background: rgba(252, 248, 215); /* Fallback for IE */
   background: rgba(252, 248, 215, 0.95);
 }
 .alertify-notifier.ajs-top {
