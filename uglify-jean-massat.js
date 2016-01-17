@@ -74,7 +74,7 @@ var cssPath = './static/css/style.min.css';
 var styleList = [
 	'./src/css/map-icons.css',
 	'./src/css/icomoon.css',
-	'./src/css/alertify.min.css',
+	'./src/css/alertify.css',
 	'./src/js/plugins/jquery.bxslider/jquery.bxslider.css',
 	'./src/js/plugins/jquery.customscroll/jquery.mCustomScrollbar.min.css',
 	'./src/js/plugins/jquery.fancybox/jquery.fancybox.css',
