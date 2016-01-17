@@ -948,8 +948,10 @@
                 },
                 beforeClose: function () {
                     if (navigator.userAgent.match(/msie [6-8]/i)) {
-                        _player.remove(); // remove player instance for IE
-                    };
+                       if(_player){
+                         _player.remove(); // remove player instance for IE
+                       }
+                    }
                 }
             });
         }
