@@ -18,7 +18,9 @@ var express = require('express'),
 	path = require('path'),
 	nodemailer = require('nodemailer'),
 	bodyParser = require('body-parser'),
+	helmet = require('helmet'),
 	mailOptions = {},
+	indexPage,
 	hostName,
 	transporter;
 
@@ -29,6 +31,31 @@ function startServer(config){
 	app.use(require('compression')());
 	app.use(bodyParser.json());
 	app.use(bodyParser.urlencoded({extended: true}));
+	app.use(helmet());
+
+	//Here we are gonna define our content security policy to avoid xss
+	var helmetCspOptions = {
+		
+		//http://content-security-policy.com/ for references
+		directives: {
+			defaultSrc: ["'self'", "https://fonts.googleapis.com"],
+			scriptSrc: ["'self'", "'unsafe-inline'"],
+			styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+			fontSrc: ["'self'", "https://fonts.gstatic.com"],
+			sandbox: ['allow-forms', 'allow-scripts', 'allow-same-origin'],
+			reportUri: '/report-violation',
+			objectSrc: []
+		},
+
+		reportOnly: false,
+ 
+		setAllHeaders: false,
+ 
+		disableAndroid: true
+	};
+
+	app.use(helmet.csp(helmetCspOptions));
+	
 
 	//Setting options object for express http handling
 	var expressHttpOptions = {
@@ -42,14 +69,18 @@ function startServer(config){
 	//Setting static directory used by express
 	if (!config.dev){
 
-		app.use(express.static(path.join(__dirname, + '/../', 'static'), expressHttpOptions));
+		indexPage = 'index.html';
+
+		app.use(express.static(path.join(__dirname + '/../', 'static'), expressHttpOptions));
 
 	}else{
+
+		indexPage = 'indexDev.html';
 
 		//We disable cache for development environement
 		expressHttpOptions.etag = false;
 		expressHttpOptions.maxAge = 0;
-		
+
 		app.use(express.static(path.join(__dirname + '/../', 'src'), expressHttpOptions));
 
 	}
@@ -79,17 +110,12 @@ function setAppRoutes(){
 
 	//The main route (regex matches / and /index.html)
 	app.get('(/|/index.html)', function(req, res){
-		res.sendFile( 'index.html', {root:'./views'});
+		res.sendFile(indexPage, {root:'./views'});
 	});
 
 	app.get('/robots.txt', function(req, res){
 		res.type('text/plain');
 		res.sendFile('robots.txt', {root:'./views'});
-	});
-
-	//test
-	app.get('/indexprod.html', function(req,res){
-		res.sendFile('indexprod.html', {root:'./views'});
 	});
 
 	//Web form mail POST sender handler
@@ -124,7 +150,7 @@ function handleMailSending(req, res){
 	transporter.sendMail(mailOptions, function(error){
 		
 		if(error){
-			
+
 			//Returning fail to ajax request
 			res.send('fail');
 			res.end();
