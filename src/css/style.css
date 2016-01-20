@@ -106,7 +106,7 @@ html {
 }
 
 #home-cover-background {
-    background-image: url('../img/uploads/rs-cover.jpg')
+    background-image: url('../img/uploads/rs-cover.jpg');
 }
 
 article,
@@ -2772,6 +2772,10 @@ body {
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 1px;
+}
+
+.strike-it{
+    text-decoration:line-through;
 }
 
 @media (max-width: 991px) {
