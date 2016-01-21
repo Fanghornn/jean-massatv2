@@ -59,12 +59,12 @@
  */
 @font-face {
     font-family:'Fredoka One';
-    src: url('../fonts/fredokaone-regular-webfont.eot');
-    src: url('../fonts/fredokaone-regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/fredokaone-regular-webfont.woff2') format('woff2'),
-         url('../fonts/fredokaone-regular-webfont.woff') format('woff'),
-         url('../fonts/fredokaone-regular-webfont.ttf') format('truetype'),
-         url('../fonts/fredokaone-regular-webfont.svg#Fredoka One') format('svg');
+    src: url('/fonts/fredokaone-regular-webfont.eot');
+    src: url('/fonts/fredokaone-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/fredokaone-regular-webfont.woff2') format('woff2'),
+         url('/fonts/fredokaone-regular-webfont.woff') format('woff'),
+         url('/fonts/fredokaone-regular-webfont.ttf') format('truetype'),
+         url('/fonts/fredokaone-regular-webfont.svg#Fredoka One') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -106,7 +106,7 @@ html {
 }
 
 #home-cover-background {
-    background-image: url('../img/uploads/jean-massat-cover.jpg');
+    background-image: url('/img/uploads/jean-massat-cover.jpg');
 }
 
 article,
@@ -2552,7 +2552,7 @@ body {
     }
 
     .head-bar-inner .row > div {
-        position: static;
+        position:static;
     }
 }
 
@@ -3993,7 +3993,7 @@ body {
     width: 72px;
     height: 24px;
     vertical-align: middle;
-    background: url("img/ajax-loader.gif");
+    background: url("/img/ajax-loader.gif");
 }
 
 .filter {
@@ -4342,7 +4342,7 @@ body {
 .fancybox-portfolio .fancybox-close,
 .fancybox-portfolio .fancybox-prev span,
 .fancybox-portfolio .fancybox-next span {
-    background-image: url("../img/fancybox_sprite.png");
+    background-image: url("/img/fancybox_sprite.png");
 }
 
 .fancybox-portfolio .fancybox-close {
@@ -4437,7 +4437,7 @@ body {
 @media only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
     .fancybox-portfolio .fancybox-nav span,
     .fancybox-portfolio .fancybox-close {
-        background-image: url("../img/fancybox_sprite@2x.png");
+        background-image: url("/img/fancybox_sprite@2x.png");
         background-size: 135px 45px;
     }
 }
@@ -4612,7 +4612,7 @@ body {
     height: 41px;
     display: block;
     position: absolute;
-    background-image: url(../img/arrows.png);
+    background-image: url(/img/arrows.png);
     background-repeat: no-repeat;
 }
 
@@ -6403,7 +6403,7 @@ body {
 }
 
 .theme-skin-dark .grid-more .ajax-loader {
-    background: url("img/ajax-loader-dark.gif");
+    background: url("/img/ajax-loader-dark.gif");
 }
 
 .theme-skin-dark .timeline-box-left .timeline-box-inner .arrow:before {
@@ -6592,11 +6592,11 @@ body {
 
 .no-rgba .head-bg:before,
 .no-rgba .portfolio-figure .portfolio-caption {
-    background-image: url("img/overlay.png");
+    background-image: url("/img/overlay.png");
 }
 
 .no-opacity .overlay {
-    background: url("img/overlay.png");
+    background: url("/img/overlay.png");
 }
 
 .no-opacity .bar-line:after {
