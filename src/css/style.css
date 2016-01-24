@@ -2574,10 +2574,6 @@ body {
     text-decoration: none;
 }
 
-.logo, .logo img {
-    max-height: 40px;
-}
-
 .logo img {
     max-width: 100%;
     margin-top: -5px;
