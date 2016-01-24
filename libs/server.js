@@ -42,9 +42,8 @@ function startServer(config){
 			scriptSrc: ["'self'", "'unsafe-inline'"],
 			styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
 			fontSrc: ["'self'", "https://fonts.gstatic.com"],
-			sandbox: ['allow-forms', 'allow-scripts', 'allow-same-origin'],
 			reportUri: '/report-violation',
-			objectSrc: []
+			objectSrc: ["'self'"]
 		},
 
 		reportOnly: false,
