@@ -59,7 +59,7 @@ you must edit the file "config.js" using nano or whatever.
 
 These two last options are required to enable email sending from the front-end form by your visitors.
 
-If you have made changed to JS or CSS scripts, and you want to run as production environement,
+If you have made changes to JS or CSS scripts, and you want to run as production environement,
 You'll need to compress jean-massat's scripts in static directory.
 
 You can perform that just by running the following command at the root directory.
