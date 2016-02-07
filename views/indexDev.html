@@ -118,6 +118,8 @@
 												<dd>23</dd>
 												<dt>github</dt>
 												<dd class="profile-github"><a href="https://github.com/Fanghornn" target="_blank">github.com/Fanghornn</a></dd>
+												<dt>Linkedin</dt>
+												<dd class="profile-linkedin"><a href="https://fr.linkedin.com/in/jean-baptiste-priam-massat-8b6070105" target="_blank">Visiter mon profil</a></dd>
 												<dt>E-mail</dt>
 												<dd><a href="mailto:jean.massat@gmail.com">jean.massat@gmail.com</a></dd>
 												<dt>Téléphone</dt>
@@ -475,12 +477,14 @@
 										<div class="inline-cont">
 											<div class="inline-text">
 												<h2 class="inline-title">jean-massat.com V2</h2>
+												<p>
 													La deuxième version de jean-massat.com est celle sur laquelle vous vous trouvez actuellement.
+													<br/><br/>L'hebergement provient d'une location de serveur VPS chez OVH, j'ai donc mis en place moi même un firewall avec <strong>iptables ainsi qu'un service fail2ban</strong> pour bannir les connexions malicieuses. J'ai utilisé le client <strong>LetsEncrypt</strong> pour vous proposer une connexion sécurisée via un certificat SSL généré par mes propres moyens, il est renouvellé tous les 30 jours grâce à un <strong>cronjob dans le crontab</strong>.
+													<br/><br/>Pour l'architecture réseau, c'est un serveur <strong>Nginx</strong> qui s'occupe de traiter vos requêtes HTTP et les redirige, grâce à un <strong>reverse proxy</strong>,  sur le processus node de l'application web qui écoute sur un port spécifique en interne. Enfin, j'ai utilisé le module npm PM2 pour <strong>persister l'application sur le serveur</strong>, de sorte à ce que, même après une eventuelle coupure des services OVH, le serveur web se remette automatiquement en place.
 													<br/><br/>Le back-end est en <strong>node.js avec le framework web express.js</strong>, le module NPM <strong>«nodemailer»</strong> m'a permis de gérer l'envoi de vos messages sur ma boite mail à travers un formulaire web que vous pouvez retrouver en pied de page.
-													<br/><br/>Pour l'architecture réseau, c'est un serveur <strong>Nginx</strong> qui s'occupe de traiter vos requêtes HTTP et les redirige, grâce à un <strong>reverse proxy</strong>,  sur le processus node du site qui écoute sur un port spécifique en interne.
 													<br/><br/>C'est une incrustation d'un template provenant de themeforest qui m'a permis de vous proposer ce design <strong>material et mobile responsive</strong>. J'ai du changer et supprimer un bon nombre de fonctionnalités pour le rendre le plus rapide possible pour le client.
-													<br/><br/><strong>Le code source du site est libre et consultable sur mon </strong><a href="" target="_blank">repository github</a>.
-												<br/></p>
+													<br/><br/><strong>Le code source du site est libre et consultable sur mon </strong><a href="https://github.com/Fanghornn/jean-massatv2" target="_blank">repository github</a>.
+												</p>
 											</div>
 										</div>								
 									</div>
@@ -640,7 +644,7 @@
             <div class="footer-social">
                 <ul class="social">
 					<li><a class="ripple-centered" href="https://github.com/Fanghornn" target="_blank"><i class="icon icon-github"></i></a></li>
-					<li><a class="ripple-centered" href="https://fr.linkedin.com/in/jean-baptiste-massat-8b6070105" target="_blank"><i class="icon icon-linkedin"></i></a></li>
+					<li><a class="ripple-centered" href="https://fr.linkedin.com/in/jean-baptiste-priam-massat-8b6070105" target="_blank"><i class="icon icon-linkedin"></i></a></li>
 				</ul>
             </div>
         </footer><!-- .footer -->
