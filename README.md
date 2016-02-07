@@ -83,7 +83,7 @@ Running the app:
 
 ## Debug 
 
-To enable debugging working environement, just set the config.dev value to true in config.js file in the root directory.
+To enable a debug working environement, just set the config.dev value to true in config.js file in the root directory.
 
 #### Have fun
 
