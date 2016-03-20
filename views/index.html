@@ -101,7 +101,7 @@
 											<div class="profile-preword"><span>Bonjour</span></div>
 											<h1 class="profile-title"><span>Je suis</span> Jean-Baptiste</h1>
 
-											<h2 class="profile-position">Développeur web</h2></div>
+											<h2 class="profile-position">Développeur web JavaScript</h2></div>
 											<dl class="profile-list">
 												<dt>Âge</dt>
 												<dd>23</dd>
@@ -139,14 +139,27 @@
 						<h2 class="section-title">Compétences</h2>
 						<div class="section-box">
 							<div class="row">							
-								<div class="col-sm-6">
+								<div class="col-sm-12">
 									<div class="progress-bar">
 										<div class="bar-data">
 											<span class="bar-title">JavaScript</span>
-											<span class="bar-value">80%</span>
+											<span class="bar-value">90%</span>
 										</div>
 										<div class="bar-line">
-											<span class="bar-fill" data-width="80%"></span>
+											<span class="bar-fill" data-width="90%"></span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">							
+								<div class="col-sm-6">
+									<div class="progress-bar">
+										<div class="bar-data">
+											<span class="bar-title">AngularJS 1</span>
+											<span class="bar-value">50%</span>
+										</div>
+										<div class="bar-line">
+											<span class="bar-fill" data-width="50%"></span>
 										</div>
 									</div>
 								</div>
@@ -167,6 +180,18 @@
 								<div class="col-sm-6">
 									<div class="progress-bar">
 										<div class="bar-data">
+											<span class="bar-title">Websockets (Socket.IO)</span>
+											<span class="bar-value">40%</span>
+										</div>
+										<div class="bar-line">
+											<span class="bar-fill" data-width="40%"></span>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-sm-6">
+									<div class="progress-bar">
+										<div class="bar-data">
 											<span class="bar-title">jQuery</span>
 											<span class="bar-value">90%</span>
 										</div>
@@ -175,11 +200,12 @@
 										</div>
 									</div>
 								</div>
-
+							</div>
+							<div class="row">
 								<div class="col-sm-6">
 									<div class="progress-bar">
 										<div class="bar-data">
-											<span class="bar-title">Websockets (Socket.IO)</span>
+											<span class="bar-title">Mootools</span>
 											<span class="bar-value">50%</span>
 										</div>
 										<div class="bar-line">
@@ -187,9 +213,7 @@
 										</div>
 									</div>
 								</div>
-							</div>
-							
-							<div class="row">							
+
 								<div class="col-sm-6">
 									<div class="progress-bar">
 										<div class="bar-data">
@@ -201,25 +225,12 @@
 										</div>
 									</div>
 								</div>
-								
+							</div>
+							<div class="row">
 								<div class="col-sm-6">
 									<div class="progress-bar">
 										<div class="bar-data">
 											<span class="bar-title">Postgres & MySQL</span>
-											<span class="bar-value">50%</span>
-										</div>
-										<div class="bar-line">
-											<span class="bar-fill" data-width="50%"></span>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<div class="row">							
-								<div class="col-sm-6">
-									<div class="progress-bar">
-										<div class="bar-data">
-											<span class="bar-title">Mootools</span>
 											<span class="bar-value">50%</span>
 										</div>
 										<div class="bar-line">
@@ -232,18 +243,17 @@
 									<div class="progress-bar">
 										<div class="bar-data">
 											<span class="bar-title">Administration serveur GNU/Linux</span>
-											<span class="bar-value">60%</span>
+											<span class="bar-value">70%</span>
 										</div>
 										<div class="bar-line">
-											<span class="bar-fill" data-width="60%"></span>
+											<span class="bar-fill" data-width="70%"></span>
 										</div>
 									</div>
 								</div>
 							</div>
-
 						</div>
 					</div>	
-				</section><!-- #skills -->								
+				</section><!-- #skills -->							
 				
 				<section id="experience" class="section section-experience">
 					<div class="animate-up">
@@ -404,7 +414,7 @@
 										<figcaption class="portfolio-caption">
 											<div class="portfolio-caption-inner">
 												<h3 class="portfolio-title">Open-dj</h3>
-												<h4 class="portfolio-cat">node.js - express - Socket.IO - MaterializeCSS - Single Page Application</h4>
+												<h4 class="portfolio-cat">node.js - AngularJS 1 - Socket.IO - MaterializeCSS - SPA</h4>
 
 												<div class="btn-group">
 													<a class="btn-link" href="https://github.com/Fanghornn/open-dj" target="_blank"><i class="icon icon-link"></i></a>
@@ -413,7 +423,7 @@
 											</div>
 										</figcaption>
 									</figure>
-									
+
 									<!-- Start: Portfolio Inline Boxes -->
 									<div id="portfolio1-inline1" class="fancybox-inline-box">
 										<img class="inline-img" src="/img/uploads/portfolio/opendjpres1011x530.jpg" alt="open dj grand écran"/>
@@ -430,7 +440,8 @@
 												<br/><br/>Je l'utilise surtout personnellement pour écouter de la musique pendant mes sessions de lecture.<br/><br/></p>
 												<h2 class="inline-title">Réalisation</h2>
 												<p>Côté serveur, c'est <strong>node.js et express derrière un reverse proxy Nginx</strong> qui distribueront l'application aux clients. Un module maison s'occupera d'ouvrir des flux audio sur la machine hôte par l’intermédiaire du lecteur multimédia VLC.
-												<br/><br/>Une fois les clients sur Open-dj, une connexion websocket est établie entre leur navigateur et mon serveur. <strong>Toutes les transactions réalisées sur l'application passeront par leur connexion permanente au serveur Socket.IO</strong>.
+												<br/><br/>Côté client, l'application est structurée sous forme d'un module principal AngularJS enveloppant la totalité du workflow de l'utilisateur, lui-même étant découpé en sous modules qui vont être responsables des fonctionnalités sur le site.
+												<br/><br/>Une fois les clients sur Open-dj, une connexion websocket est établie entre leur navigateur et mon serveur. <strong>Toutes les transactions réalisées sur l'application passeront par leur connexion permanente au serveur Socket.IO ou par <strong>des promesses JavaScript</strong> avec le service $http de Angular</strong>.
 												<br/><br/>Un champ de recherche offre la possibilité d'effectuer une recherche sur youtube.com, en fait, je récupère leur pattern de recherche sur le serveur et ouvre une requête http sur youtube via <strong>le module HTTP de node.js</strong>. 
 												<br/><br/>Une fois la requête terminée, je leur renvoie les résultats de recherche sur leur vue HTML sous forme de blocs cliquables.
 												<br/><br/>Lorsqu'un utilisateur souhaite lancer la lecture d'une musique en cliquant sur un bloc de résultat, l'ID de la vidéo youtube est communiquée au serveur node.js. Tous les autres utilisateurs connectés au serveur websocket recevront une notification indiquant qu'un de leur homologue vient de lancer la lecture d'une musique.
@@ -441,7 +452,7 @@
 									</div>																
 									<!-- End: Portfolio Inline Boxes -->
 								</div>
-							</div><!-- .grid-item -->			
+							</div><!-- .grid-item -->
 
 							<div class="grid-item size11 web">
 								<div class="grid-box">
