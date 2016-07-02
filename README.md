@@ -83,44 +83,21 @@ Running the app:
 
 ## Production
 
-pm2 npm package is very usefull to persist a node application even if the server goes down and proceed to reboot.
+We will set the node app as a systemd service.
 
-To begin install the package globally to your system:
+Set your own application path in the file jean-massat.service located in this repository to point out our startup_script.sh file.
 
-----------------------------------------------------
+Create a file named jean-massat.service in /lib/systemd/system/ on debian 8 with the content of the file jean-massat.service in it.
 
-    npm i pm2 -g
-    pm2 updatePM2
-
-----------------------------------------------------
-
-Then you can start using pm2 to run your node app with your web user:
+then enable the service with the command:
 
 ----------------------------------------------------
 
-    cd /path/to/jean-massat/
-    pm2 start main.js --watch --merge-logs
-    pm2 list
+    systemctl enable jean-massat.service
 
 ----------------------------------------------------
 
-If everything went fine, you should see our node app within a list of your pm2 running processes.
-Check if the status is ok
-NB: The "--watch" argument will restart the app everytime a single file has been changed in jean-massat directory and "--merge-logs" will unify our app logs (like stdout and stderr).
-
-Now we need to tell to pm2, that we want to save our processes list and make it persistant like a debian service after each system boot.
-Just run the following:
-
-----------------------------------------------------
-
-    pm2 save
-    pm2 startup
-
-----------------------------------------------------
-
-pm2 may have notified you that you should run a command like "sudo env PATH=$PATH etc..", indeed, the command needs sudo privileges to create init scripts like /etc/init.d/pm2-init.sh
-
-You can also edit this script if you are getting troubles when testing the service intialisation.
+Now the website is recognized as a service on debian.
 
 ## Debug 
 
