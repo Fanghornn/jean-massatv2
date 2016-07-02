@@ -13,6 +13,8 @@
  */
 "use strict";
 
+process.chdir(__dirname);
+
 var server = require('./libs/server.js'),
 	config = require('./config.js');
 
