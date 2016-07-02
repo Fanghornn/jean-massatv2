@@ -4,7 +4,7 @@ Description=jean-massat website
 [Service]
 Type=simple
 RemainAfterExit=no
-ExecStart=sudo -u www-data node /path/to/appdir/startup_script.sh
+ExecStart=/path/to/appdir/startup_script.sh
 
 [Install]
 WantedBy=multi-user.target
