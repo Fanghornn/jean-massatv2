@@ -1094,6 +1094,13 @@
             return false;
         });
 
+        /**
+         * Compute age
+         */
+        var diff = new Date(new Date() - new Date('1992-12-27T00:00:01Z'));
+        var myAge = new Date().getFullYear() - diff.getFullYear(); 
+        $('#myAge').text(myAge);
+
         /** Preloader:
          *  site was successfully loaded, hide site pre-loader */
         hideSitePreloader();
