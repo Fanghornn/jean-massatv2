@@ -188,7 +188,7 @@
                 $.each(boxes, function(index){
 
                     //From the second to the fifth timeline box (work exp)
-                    if(index > 0 && index <= 4){
+                    if(index > 0 && index <= 6){
                         
                         //Getting previous + current timeline box top css value
                         var el = $(this);
@@ -228,187 +228,6 @@
             $('.timeline-bar').attr('style', '');
             $('.timeline-box').attr('style', '');
             $('.timeline-inner').attr('style', '');
-        }
-    }
-
-    function availabilityCalendar() {
-		var calendarHtml = $(".calendar-busy", "#calendar");
-		
-		var calendarThead = calendarHtml.find('.calendar-thead');
-		var calendarTbody = calendarHtml.find('.calendar-tbody');
-		
-		var calendarTodayDay = calendarHtml.find('.calendar-today .day');
-		var calendarTodayMonth = calendarHtml.find('.calendar-today .month');
-		var calendarTodayWeekday = calendarHtml.find('.calendar-today .week-day');
-		
-		var calendarActiveMonth = calendarHtml.find('.active-month');
-		var calendarActiveYear = calendarHtml.find('.active-year');		
-		var calendarActiveMonthAndYear = calendarActiveMonth.add(calendarActiveYear)
-		
-		
-        if (calendarHtml.length > 0) {
-            calendar = {
-                currentYear: new Date().getFullYear(),
-                currentMonth: new Date().getMonth(),
-                currentWeekDay: new Date().getDay(),
-                currentDay: new Date().getDate(),
-                active: {
-                    month: '',
-                    year: ''
-                },
-                limitUp: {
-                    month: '',
-                    year: ''
-                },
-                limitDown: {
-                    month: '',
-                    year: ''
-                },
-                busyDays: '',
-                daysInMonth: [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
-                weekNames: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-                monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-                init: function () {
-                    this.initToday();
-                    this.initWeekNames();
-                    this.createMonthHtml(this.currentYear, this.currentMonth);
-                },
-                initToday: function () {
-                    calendarTodayDay.html(this.currentDay);
-                    calendarTodayMonth.html(this.monthNames[this.currentMonth].substring(0, 3));
-                    calendarTodayWeekday.html(this.weekNames[this.currentWeekDay]);
-                },
-                initWeekNames: function () {
-                    var html = '<tr>';
-
-                    for (var i = 0; i < this.weekNames.length; ++i) {
-                        html += '<th>' + this.weekNames[i].substring(0, 3) + '</th>';
-                    }
-                    html += '</tr>';
-
-                    calendarThead.append(html);
-                },
-                getDaysInMonth: function (year, month) {
-                    if ((month == 1) && (year % 4 == 0) && ((year % 100 != 0) || (year % 400 == 0))) {
-                        return 29;
-                    } else {
-                        return this.daysInMonth[month];
-                    }
-                },
-                createMonthHtml: function (year, month) {
-                    var html = '';
-                    var monthFirstDay = new Date(year, month, 1).getDay();
-                    var monthBusyDays = [];
-
-                    calendarActiveMonth.empty().html(this.monthNames[month]);
-                    calendarActiveYear .empty().html(year);
-
-                    // Get busy days array for active month
-                    for (var i = 0; i < this.busyDays.length; i++) {
-                        if (this.busyDays[i].getFullYear() == year && this.busyDays[i].getMonth() == month) {
-                            monthBusyDays[i] = this.busyDays[i].getDate();
-                        }
-                    }
-
-                    for (var j = 0; j < 42; j++) {
-                        var className = '';
-
-                        // Set today class
-                        if (year == this.currentYear && month == this.currentMonth && (j - monthFirstDay + 1) == this.currentDay) {
-                            className += 'current-day';
-                        }
-
-                        // Set busy day class
-                        if (arrayContains(monthBusyDays, (j - monthFirstDay + 1))) {
-                            className += 'busy-day';
-                        }
-
-                        // Create month html
-                        if (j % 7 == 0) html += '<tr>';
-                        if ((j < monthFirstDay) || (j >= monthFirstDay + this.getDaysInMonth(year, month))) {
-                            html += '<td class="calendar-other-month"><span></span></td>';
-                        } else {
-                            html += '<td class="calendar-current-month"><span class="' + className + '">' + (j - monthFirstDay + 1) + '</span></td>';
-                        }
-                        if (j % 7 == 6) html += '</tr>';
-                    }
-
-                    calendarTbody.empty().append(html);
-                },
-                nextMonth: function () {
-                    if (!(this.active.year == this.limitUp.year && this.active.month == this.limitUp.month)) {
-                        calendarActiveMonthAndYear.addClass('moveup');
-                        calendarTbody.addClass('moveright');
-						
-                        setTimeout(function () {
-                            calendarActiveMonthAndYear.removeClass('moveup');
-                            calendarActiveMonthAndYear.addClass('movedown');
-
-                            calendarTbody.removeClass('moveright');
-                            calendarTbody.addClass('moveleft');
-                        }, 300);
-                        setTimeout(function () {
-                            calendarActiveMonthAndYear.removeClass('movedown');
-                            calendarTbody.removeClass('moveleft');
-                        }, 450);
-
-                        if (this.active.month == 11) {
-                            this.active.month = 0;
-                            this.active.year = this.active.year + 1;
-                        } else {
-                            this.active.month = this.active.month + 1;
-                        }
-                        this.createMonthHtml(this.active.year, this.active.month);
-                    } else {
-                        console.log('Calendar Limit Up');
-                    }
-                },
-                prevMonth: function () {
-                    if (!(this.active.year == this.limitDown.year && this.active.month == this.limitDown.month)) {
-                        calendarActiveMonthAndYear.addClass('moveup');
-                        calendarTbody.addClass('moveright');
-                        setTimeout(function () {
-                            calendarActiveMonthAndYear.removeClass('moveup');
-                            calendarActiveMonthAndYear.addClass('movedown');
-
-                            calendarTbody.removeClass('moveright');
-                            calendarTbody.addClass('moveleft');
-                        }, 300);
-                        setTimeout(function () {
-                            calendarActiveMonthAndYear.removeClass('movedown');
-                            calendarTbody.removeClass('moveleft');
-                        }, 450);
-
-                        if (this.active.month == 0) {
-                            this.active.month = 11;
-                            this.active.year = this.active.year - 1;
-                        } else {
-                            this.active.month = this.active.month - 1;
-                        }
-                        this.createMonthHtml(this.active.year, this.active.month);
-                    } else {
-                        console.log('Calendar Limit Down');
-                    }
-                }
-            };
-
-            calendar.active.year = calendar.currentYear;
-            calendar.active.month = calendar.currentMonth;
-            calendar.limitUp.year = calendar.currentYear + 1;
-            calendar.limitUp.month = calendar.currentMonth;
-            calendar.limitDown.year = calendar.currentYear;
-            calendar.limitDown.month = calendar.currentMonth;
-            calendar.busyDays = calendarBusyDays;
-
-            calendar.init();
-
-            calendarHtml.on(clickEventType, '.calendar-prev', function () {
-                calendar.prevMonth();
-            });
-
-            calendarHtml.on(clickEventType, '.calendar-next', function () {
-                calendar.nextMonth();
-            });
         }
     }
 
@@ -487,79 +306,6 @@
         $('#preloader').remove();
         $('body').removeClass('loading');
     }    
-
-    function initialiseGoogleMap() {
-        var latlng;
-        var lat = 44.5403;
-        var lng = -78.5463;
-        var map = $('#map');
-        var mapCanvas = map.get(0);
-
-        if (map.data("latitude")) lat = map.data("latitude");
-        if (map.data("longitude")) lng = map.data("longitude");
-
-        latlng = new google.maps.LatLng(lat, lng);
-
-        // Map Options
-        var mapOptions = {
-            zoom: 14,
-            center: latlng,
-            scrollwheel: true,
-            mapTypeId: google.maps.MapTypeId.ROADMAP,
-            styles: [
-                {
-                    "featureType": "landscape",
-                    "stylers": [{"saturation": -100}, {"lightness": 65}, {"visibility": "on"}]
-                },
-                {
-                    "featureType": "poi",
-                    "stylers": [{"saturation": -100}, {"lightness": 51}, {"visibility": "simplified"}]
-                },
-                {"featureType": "road.highway", "stylers": [{"saturation": -100}, {"visibility": "simplified"}]},
-                {
-                    "featureType": "road.arterial",
-                    "stylers": [{"saturation": -100}, {"lightness": 30}, {"visibility": "on"}]
-                },
-                {
-                    "featureType": "road.local",
-                    "stylers": [{"saturation": -100}, {"lightness": 40}, {"visibility": "on"}]
-                },
-                {"featureType": "transit", "stylers": [{"saturation": -100}, {"visibility": "simplified"}]},
-                {"featureType": "administrative.province", "stylers": [{"visibility": "off"}]},
-                {
-                    "featureType": "water",
-                    "elementType": "labels",
-                    "stylers": [{"visibility": "on"}, {"lightness": -25}, {"saturation": -100}]
-                },
-                {
-                    "featureType": "water",
-                    "elementType": "geometry",
-                    "stylers": [{"hue": "#ffff00"}, {"lightness": -25}, {"saturation": -97}]
-                }
-            ]
-        };
-
-        // Create the Map
-        map = new google.maps.Map(mapCanvas, mapOptions);
-
-        var marker = new Marker({
-            map: map,
-            position: latlng,
-            icon: {
-                path: SQUARE_PIN,
-                fillColor: '',
-                fillOpacity: 0,
-                strokeColor: '',
-                strokeWeight: 0
-            },
-            map_icon_label: '<span class="map-icon map-icon-postal-code"></span>'
-        });
-
-        // Keep Marker in Center
-        google.maps.event.addDomListener(window, 'resize', function () {
-            map.setCenter(latlng);
-        });
-    };
 
     function lockScroll() {
         var $html = $('html');
@@ -733,16 +479,10 @@
          *  positioning interests section tooltips */
         positioningInterestsTooltips();
 
-
         /** Timeline:
          *  positioning timeline elements */
         positioningTimelineElements();
 
-
-        /** Calendar:
-         *  calendar object initialization */
-        availabilityCalendar();
-		
 		/** Contct Section:
 		 *  set equal height for section boxes */
 		setSectionContactHeight();
@@ -1071,13 +811,6 @@
 
             if ($('body').hasClass('sidebar-opened')) closeSidebar();
         });
-
-
-        /** Google Map Initialisation */
-        if ($('#map').length > 0) {
-            initialiseGoogleMap();
-        }
-
 
         /** Window Scroll Top Button */
 		var $btnScrollTop = $('.btn-scroll-top');
