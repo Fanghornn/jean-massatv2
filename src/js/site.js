@@ -9,34 +9,6 @@
     var stickyNav = $('.head-bar');
     var stickyNavHeight = 0;
 
-    var calendar = new Object();
-    var calendarBusyDays = [        
-        new Date(2015, 11, 3),
-        new Date(2015, 11, 15),
-        new Date(2015, 11, 19),        
-        new Date(2015, 11, 30),
-		new Date(2015, 11, 31),
-
-        new Date(2016, 0, 11),
-        new Date(2016, 0, 12),
-        new Date(2016, 0, 13),
-        new Date(2016, 0, 14),
-		
-		new Date(2016, 1, 3),
-        new Date(2016, 1, 15),
-        new Date(2016, 1, 18),
-        new Date(2016, 1, 29),
-		
-		new Date(2016, 2, 3),
-        new Date(2016, 2, 15),
-        new Date(2016, 2, 16),
-        new Date(2016, 2, 18),
-        new Date(2016, 2, 28),
-        new Date(2016, 2, 29),
-        new Date(2016, 2, 30)
-    ];
-
-
     /**
      * Detect Device Type
      */
@@ -830,8 +802,7 @@
         /**
          * Compute age
          */
-        var diff = new Date(new Date() - new Date('1992-12-27T00:00:01Z'));
-        var myAge = new Date().getFullYear() - diff.getFullYear(); 
+        var myAge = new Date().getFullYear() - new Date('1992-12-27T00:00:01Z').getFullYear(); 
         $('#myAge').text(myAge);
 
         /** Preloader:
