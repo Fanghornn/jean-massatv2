@@ -3717,7 +3717,7 @@ body {
 
 .progress-bar {
     position: relative;
-    padding: 15px 20px 15px 20px;
+    padding: 15px 20px 50px 20px;
     margin-bottom:35px;
     box-sizing: border-box;
     border-left: 4px solid;
@@ -3737,64 +3737,14 @@ body {
     float:left;
 }
 
-.progress-bar .bar-percent{
-    font-style: italic;
-    color:#828282;
-    float:right;
-}
-
-.progress-bar .bar-value {
-    font-size: 16px;
-    position: absolute;
-    right: 0;
-    top: 0;
-    display: block;
-}
-
 .progress-bar .bar-title {
     margin-bottom: 5px;
     font-size: 1rem; 
 }
 
-.progress-bar .bar-fill {
-    width: 0;
-    height: 100%;
-    display: block;
-    position: relative;
-    z-index: 1;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    -ms-border-radius: 5px;
-    -o-border-radius: 5px;
-    border-radius: 5px;
-    -webkit-transition: width 400ms ease-out 100ms;
-    -moz-transition: width 400ms ease-out 100ms;
-    -ms-transition: width 400ms ease-out 100ms;
-    -o-transition: width 400ms ease-out 100ms;
-    transition: width 400ms ease-out 100ms;
-}
-
-.progress-bar .bar-line {
-    height: 10px;
-    margin-top: 30px;
-    position: relative;
-    clear:both;
-}
-
-.progress-bar .bar-line:after {
-    content: '';
-    opacity: 0.2;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    -ms-border-radius: 5px;
-    -o-border-radius: 5px;
-    border-radius: 5px;
+.progress-bar .bar-subtitle {
+    display:block;
+    padding-top:7px;
 }
 
 @media (min-width: 768px) {
