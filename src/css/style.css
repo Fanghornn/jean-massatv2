@@ -3717,7 +3717,7 @@ body {
 
 .progress-bar {
     position: relative;
-    padding: 15px 20px 50px 20px;
+    padding: 15px 20px 60px 20px;
     margin-bottom:35px;
     box-sizing: border-box;
     border-left: 4px solid;
@@ -3744,7 +3744,7 @@ body {
 
 .progress-bar .bar-subtitle {
     display:block;
-    padding-top:7px;
+    padding-top:10px;
 }
 
 @media (min-width: 768px) {
