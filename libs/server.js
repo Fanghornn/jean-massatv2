@@ -68,7 +68,7 @@ function startServer(config){
 	//Setting static directory used by express
 	if (!config.dev){
 
-		indexPage = 'index.html';
+		indexPage = 'disabled.html';
 
 		app.use(express.static(path.join(__dirname + '/../', 'static'), expressHttpOptions));
 
