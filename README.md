@@ -2,8 +2,6 @@
 
 jean-massatv2 is the second version of my personnal resume/portfolio website.
 
-![jean-massatv2_preview](http://i.imgur.com/TVg3EIQ.jpg)
-
 ## OS Support
 
 Gnu/Linux only, debian 7 & 8 as far as i tested it
